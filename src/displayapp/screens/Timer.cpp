@@ -5,6 +5,8 @@
 
 using namespace Pinetime::Applications::Screens;
 
+int default_time;
+
 static void btnEventHandler(lv_obj_t* obj, lv_event_t event) {
   auto* screen = static_cast<Timer*>(obj->user_data);
   if (event == LV_EVENT_PRESSED) {
@@ -17,7 +19,7 @@ static void btnEventHandler(lv_obj_t* obj, lv_event_t event) {
 }
 
 Timer::Timer(DisplayApp* app, Controllers::TimerController& timerController) : Screen(app), timerController {timerController} {
-
+  default_time=2;//teatimer
   lv_obj_t* colonLabel = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_font(colonLabel, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_76);
   lv_obj_set_style_local_text_color(colonLabel, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE);
@@ -61,6 +63,7 @@ Timer::Timer(DisplayApp* app, Controllers::TimerController& timerController) : S
   txtPlayPause = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(txtPlayPause, btnPlayPause, LV_ALIGN_CENTER, 0, 0);
 
+  minuteCounter.SetValue(default_time);
   if (timerController.IsRunning()) {
     SetTimerRunning();
   } else {
@@ -145,7 +148,7 @@ void Timer::ToggleRunning() {
 }
 
 void Timer::Reset() {
-  minuteCounter.SetValue(0);
+  minuteCounter.SetValue(default_time);
   secondCounter.SetValue(0);
   SetTimerStopped();
 }
