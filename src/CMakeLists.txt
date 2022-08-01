@@ -6,6 +6,7 @@ project(pinetime-app C CXX ASM)
 # define some variables just for this example to determine file locations
 set(NRF_PROJECT_NAME pinetime-app)
 set(NRF_BOARD pca10040)
+set(NRF_TARGET "nrf52")
 
 # check if all the necessary tools paths have been provided.
 if (NOT NRF5_SDK_PATH)
