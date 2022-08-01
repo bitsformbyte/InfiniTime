@@ -15,6 +15,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(NRF_TARGET "nrf52")
+set(ARM_NONE_EABI_TOOLCHAIN_PATH "/usr")
+set(BUILD_DFU ON)
+set(NRF5_SDK_PATH "/home/laptop/Downloads/nRF5_SDK_15.3.0_59ac345")
 
 if (NOT ARM_NONE_EABI_TOOLCHAIN_PATH)
   message(FATAL_ERROR "The path to the toolchain (arm-none-eabi) must be specified on the command line (add -DARM_NONE_EABI_TOOLCHAIN_PATH=<path>")
